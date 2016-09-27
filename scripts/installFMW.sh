@@ -23,7 +23,7 @@ if [ ! -d "$FMW_HOME" ]; then
   fi
   if [ -f "$FMW_INSTALL_HOME/$FMW_INSTALL_JAR" ]; then
     echo Substitute $FMW_INSTALL_RSP_TPL to $FMW_INSTALL_RSP
-    envsubst < $FMW_INSTALL_RSP_TPL >> $FMW_INSTALL_RSP
+    envsubst < $FMW_INSTALL_RSP_TPL > $FMW_INSTALL_RSP
     echo Install Fusion Middleware Infrastucture 12cR2
     $JAVA_HOME/bin/java -jar $FMW_INSTALL_HOME/$FMW_INSTALL_JAR  -silent -responseFile $PWD/$FMW_INSTALL_RSP
   else    

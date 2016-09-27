@@ -11,24 +11,24 @@ export SOA_INSTALL_ZIP=fmw_12.2.1.1.0_soa_Disk1_1of1.zip
 export SOABPM_INSTALL_TYPE=BPM
 #
 # SOA and BPM Suite 12c
-if [[ -d "$FMW_HOME" && ! -d "$SOA_HOME" ]]; then
+if [[ -d "$FMW_HOME" && ! -d "$SOA_PROD_DIR" ]]; then
   #
   #Unzip SOA&BPM
   if [ ! -f "$SOA_INSTALL_HOME/$SOA_INSTALL_JAR" ]; then
-    if [ -f "$SOA_INSTALL_HOME/$SOA_INSTALL_ZIP" ]; then
-      echo Unzip $SOA_INSTALL_HOME/$SOA_INSTALL_ZIP to $SOA_INSTALL_HOME/$SOA_INSTALL_JAR
-      unzip $SOA_INSTALL_HOME/$SOA_INSTALL_ZIP -d $SOA_INSTALL_HOME
+    if [ -f "$SOA_ZIP_HOME/$SOA_INSTALL_ZIP" ]; then
+      echo Unzip $SOA_ZIP_HOME/$SOA_INSTALL_ZIP to $SOA_INSTALL_HOME/$SOA_INSTALL_JAR
+      unzip -o $SOA_ZIP_HOME/$SOA_INSTALL_ZIP -d $SOA_INSTALL_HOME
     else
-      echo $SOA_INSTALL_HOME/$SOA_INSTALL_ZIP does not exist!
+      echo $SOA_ZIP_HOME/$SOA_INSTALL_ZIP does not exist!
     fi  
   else
     echo $SOA_INSTALL_JAR already unzipped
   fi
   if [ -f "$SOA_INSTALL_HOME/$SOA_INSTALL_JAR" ]; then
     echo Substitute $SOA_INSTALL_RSP_TPL to $SOA_INSTALL_RSP
-    envsubst < $SOA_INSTALL_RSP_TPL >> $SOA_INSTALL_RSP
+    envsubst < $SOA_INSTALL_RSP_TPL > $SOA_INSTALL_RSP
     echo Install SOA and BPM Suite 12cR2
-    $JAVA_HOME/bin/java -jar $SOA_INSTALL_HOME/$SOA_INSTALL_JAR -silent -responseFile $SOA_INSTALL_HOME/$SOA_INSTALL_RSP
+    $JAVA_HOME/bin/java -jar $SOA_INSTALL_HOME/$SOA_INSTALL_JAR -silent -responseFile $PWD/$SOA_INSTALL_RSP
   else
     echo $SOA_INSTALL_JAR not available!./
   fi
@@ -36,7 +36,7 @@ else
   if [ ! -d "$FMW_HOME" ]; then
     echo $FMW_HOME not available: First install Fusion Middlware Infrastucture
   fi
-  if [ -d "$SOA_HOME" ]; then
-    echo $SOA_HOME available: SOA Already installed
+  if [ -d "$SOA_PROD_DIR" ]; then
+    echo $SOA_PROD_DIR available: SOA Already installed
   fi
 fi
