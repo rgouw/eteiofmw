@@ -1,29 +1,19 @@
 #!/bin/bash
-. $PWD/fmw12c_env.sh
-
 echo _______________________________________________________________________________
-echo Java JDK 8
+echo Java SDK 8
 ./installJava.sh
-
-echo _______________________________________________________________________________
-echo Installing database
-./installDB.sh
-
 echo
 echo _______________________________________________________________________________
 echo Fusion Middleware Infrastructure
 ./installFMW.sh
-
 echo
 echo _______________________________________________________________________________
 echo SOA & BPM Suite
 ./installSOA.sh
-
 echo
 echo _______________________________________________________________________________
 echo ServiceBus
 ./installSB.sh
-
 echo
 echo _______________________________________________________________________________
 echo Managed File Transfer
