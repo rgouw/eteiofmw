@@ -1,7 +1,11 @@
 #!/bin/bash
 echo _______________________________________________________________________________
+echo Installing Oracle Database 12c
+echo ./installDB.sh
+echo _______________________________________________________________________________
 echo Java SDK 8
 ./installJava.sh
+exit
 echo
 echo _______________________________________________________________________________
 echo Fusion Middleware Infrastructure
