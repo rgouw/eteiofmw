@@ -2,7 +2,7 @@
 operation=createRepository
 
 #Enter the database connection details in the supported format. Database Connect String. This can be specified in the following format - For Oracle Database: host:port:SID OR host:port/service , For SQLServer, IBM DB2, MySQL and JavaDB Database: Server name/host:port:databaseName. For RAC database, specify VIP name or one of the Node name as Host name.For SCAN enabled RAC database, specify SCAN host as Host name.
-connectString=darlin-vce-book:1521:book
+connectString=${DB_CONNECT_STR}
 
 #Database Type - [ORACLE|SQLSERVER|IBMDB2|EBR|MYSQL] - default is ORACLE
 databaseType=ORACLE
@@ -17,7 +17,7 @@ dbRole=SYSDBA
 #edition=
 
 #Prefix to be used for the schema. This is optional for non-prefixable components.
-schemaPrefix=DEV
+schemaPrefix=${DB_SCHEMA_PREFIX}
 
 #List of components separated by comma. Remove the components which are not needed.
 componentList=UCSUMS,MDS,WLS,STB,OPSS,IAU,IAU_APPEND,IAU_VIEWER,SOAINFRA
@@ -56,7 +56,7 @@ useSamePasswordForAllSchemaUsers=false
 #honorOMF=false
 
 #Variable required for component SOAINFRA. Database Profile (SMALL/MED/LARGE)
-SOA_PROFILE_TYPE=SMALL
+SOA_PROFILE_TYPE=${DB_PROFILE}
 
 #Variable required for component SOAINFRA. Healthcare Integration(YES/NO)
 HEALTHCARE_INTEGRATION=NO
