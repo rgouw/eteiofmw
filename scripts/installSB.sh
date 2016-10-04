@@ -2,7 +2,7 @@
 . $PWD/fmw12c_env.sh
 #
 export OSB_ZIP_HOME=$PWD/../Zipped
-export OSB_INSTALL_HOME=$PWD/../Extracted
+export OSB_INSTALL_HOME=$PWD/../Extracted/stage
 export OSB_INSTALL_JAR=fmw_12.2.1.1.0_osb.jar
 export OSB_INSTALL_RSP=fmw_12.2.1.1.0_osb.rsp
 export OSB_INSTALL_RSP_TPL=$OSB_INSTALL_RSP.tpl

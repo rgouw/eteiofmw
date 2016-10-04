@@ -1,11 +1,10 @@
 #!/bin/bash
 echo _______________________________________________________________________________
 echo Installing Oracle Database 12c
-echo ./installDB.sh
+./installDB.sh
 echo _______________________________________________________________________________
 echo Java SDK 8
 ./installJava.sh
-exit
 echo
 echo _______________________________________________________________________________
 echo Fusion Middleware Infrastructure
@@ -18,3 +17,19 @@ echo
 echo _______________________________________________________________________________
 echo ServiceBus
 ./installSB.sh
+echo
+echo _______________________________________________________________________________
+echo WebCenter Content
+./installWCC.sh
+echo
+echo _______________________________________________________________________________
+echo WebCenter Portal
+./installWCP.sh
+echo
+echo _______________________________________________________________________________
+echo WebCenter Portal
+./installOHS.sh
+echo
+echo _______________________________________________________________________________
+echo JDeveloper WebCenter
+./installJDevWC.sh

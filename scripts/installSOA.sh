@@ -2,7 +2,7 @@
 . $PWD/fmw12c_env.sh
 #
 export SOA_ZIP_HOME=$PWD/../Zipped
-export SOA_INSTALL_HOME=$PWD/../Extracted
+export SOA_INSTALL_HOME=$PWD/../Extracted/stage
 export SOA_INSTALL_JAR=fmw_12.2.1.1.0_soa.jar
 export SOA_INSTALL_RSP=fmw_12.2.1.1.0_soa.rsp
 export SOA_INSTALL_RSP_TPL=$SOA_INSTALL_RSP.tpl
