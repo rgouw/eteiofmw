@@ -7,7 +7,7 @@
 #############################################################################
 # Modify these values as necessary
 import sys, traceback
-scriptName = 'createSoaBpmDomain.py'
+scriptName = sys.argv[0]
 #
 #Home Folders
 wlsHome    = fmwHome+'/wlserver'
@@ -29,30 +29,42 @@ soaApplicationsHome = applicationsHome+'/'+soaDomainName
 #b2bTpl=fmwHome+'/soa/common/templates/wls/oracle.soa.b2b_template_12.1.3.jar'
 #
 # Templates for 12.2.1
+# See also https://docs.oracle.com/middleware/12211/lcm/WLDTR/toc.htm
 wlsjar =fmwHome+'/wlserver/common/templates/wls/wls.jar'
 oracleCommonTplHome=fmwHome+'/oracle_common/common/templates'
 wlservicetpl=oracleCommonTplHome+'/wls/oracle.wls-webservice-template.jar'
+#wsmpmtpl=oracleCommonTplHome+'/wls/oracle.wsmpm_template.jar'
 osbtpl=fmwHome+'/osb/common/templates/wls/oracle.osb_template.jar'
 applCoreTpl=oracleCommonTplHome+'/wls/oracle.applcore.model.stub_template.jar'
 soatpl=fmwHome+'/soa/common/templates/wls/oracle.soa_template.jar'
 bamtpl=fmwHome+'/soa/common/templates/wls/oracle.bam.server_template.jar'
 bpmtpl=fmwHome+'/soa/common/templates/wls/oracle.bpm_template.jar'
-essBasicTpl=oracleCommonTplHome+'/wls/oracle.ess.basic_template.jar'
-essEmTpl=fmwHome+'/em/common/templates/wls/oracle.em_ess_template.jar'
 ohsTpl=fmwHome+'/ohs/common/templates/wls/ohs_managed_template.jar' # need to be validated!
 b2bTpl=fmwHome+'/soa/common/templates/wls/oracle.soa.b2b_template.jar' # need to be validated!
+# ESS not used 
+#essBasicTpl=oracleCommonTplHome+'/wls/oracle.ess.basic_template.jar'
+#essEmTpl=fmwHome+'/em/common/templates/wls/oracle.em_ess_template.jar'
 #
 # ServerGroup definitions
 adminSvrGrpDesc='WSM-CACHE-SVR WSMPM-MAN-SVR JRF-MAN-SVR'
 adminSvrGrp=["WSM-CACHE-SVR" , "WSMPM-MAN-SVR" , "JRF-MAN-SVR"]
-essSvrGrpDesc="ESS-MGD-SVRS"
-essSvrGrp=["ESS-MGD-SVRS"]
-soaSvrGrpDesc="SOA-MGD-SVRS"
-soaSvrGrp=["SOA-MGD-SVRS"]
+#osbSvrGrpDesc="OSB-MGD-SVRS-COMBINED"
+#osbSvrGrp=["OSB-MGD-SVRS-COMBINED"]
+osbSvrGrpDesc="OSB-MGD-SVRS-ONLY"
+osbSvrGrp=["OSB-MGD-SVRS-ONLY"]
+#soaSvrGrpDesc="SOA-MGD-SVRS"
+#soaSvrGrp=["SOA-MGD-SVRS"]
+soaSvrGrpDesc="SOA-MGD-SVRS-ONLY"
+soaSvrGrp=["SOA-MGD-SVRS-ONLY"]
+#
+wsmSvrGrpDesc='WSMPM-MAN-SVR JRF-MAN-SVR WSM-CACHE-SVR'
+wsmSvrGrp=["WSMPM-MAN-SVR", "JRF-MAN-SVR", "WSM-CACHE-SVR"]
+#
 bamSvrGrpDesc="BAM12-MGD-SVRS"
 bamSvrGrp=["BAM12-MGD-SVRS"]
-osbSvrGrpDesc="OSB-MGD-SVRS-COMBINED"
-osbSvrGrp=["OSB-MGD-SVRS-COMBINED"]
+#
+#essSvrGrpDesc="ESS-MGD-SVRS"
+#essSvrGrp=["ESS-MGD-SVRS"]
 #
 #
 lineSeperator='__________________________________________________________________________________'
@@ -331,6 +343,12 @@ def main():
     print (lineSeperator)
     print ('Adding Webservice template '+wlservicetpl)
     addTemplate(wlservicetpl)
+    # OSB
+    if osbEnabled == 'true':
+      print ('Adding OSB template '+osbtpl)
+      addTemplate(osbtpl)
+    else:
+      print('OSB is disabled')
     # SOA Suite
     if soaEnabled == 'true':
       print ('Adding SOA Template '+soatpl)    
@@ -343,12 +361,6 @@ def main():
       addTemplate(bpmtpl)
     else:
       print('BPM is disabled')
-    # OSB
-    if osbEnabled == 'true':
-      print ('Adding OSB template '+osbtpl)
-      addTemplate(osbtpl)
-    else:
-      print('OSB is disabled')
     #
     print ('Adding ApplCore Template '+applCoreTpl)
     addTemplate(applCoreTpl)
@@ -371,13 +383,13 @@ def main():
     else:
       print('B2B is disabled')
     #
-    if essEnabled == 'true':
-      print ('Adding ESS Template'+essBasicTpl)
-      addTemplate(essBasicTpl)
-      print ('Adding ESS Em Template'+essEmTpl)
-      addTemplate(essEmTpl)
-    else:
-      print('ESS is disabled')
+    #if essEnabled == 'true':
+    #  print ('Adding ESS Template'+essBasicTpl)
+    #  addTemplate(essBasicTpl)
+    #  print ('Adding ESS Em Template'+essEmTpl)
+    #  addTemplate(essEmTpl)
+    #else:
+    #  print('ESS is disabled')
     # 
     dumpStack()
     print ('Finished templates')
@@ -438,7 +450,17 @@ def main():
         createManagedServer(osbSvr2,server2Address,osbSvr2Port,osbClr,server2Machine,
                             osbJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
       else:
-        print('Do not create OSB Server2')      
+        print('Do not create OSB Server2')  
+    # WSM
+    if wsmEnabled == 'true':
+      createCluster(wsmClr)
+      createManagedServer(wsmSvr1,server1Address,wsmSvr1Port,wsmClr,server1Machine,
+                          wsmJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+      if wsmSvr2Enabled == 'true':                   
+        createManagedServer(wsmSvr2,server2Address,wsmSvr2Port,wsmClr,server2Machine,
+                            wsmJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+      else:
+        print('Do not create WSM Server2')
     #
 	  # BAM
     if bamEnabled == 'true':
@@ -452,16 +474,15 @@ def main():
         print('Do not create BAM Server2')
 	  #
     # ESS
-    if essEnabled == 'true':
-      createCluster(essClr)
-      adaptManagedServer('ess_server1',essSvr1,server1Address,essSvr1Port,essClr,server1Machine,
-                         essJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
-      if essSvr2Enabled == 'true':                   
-        createManagedServer(essSvr2,server2Address,essSvr2Port,essClr,server2Machine,
-                            essJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
-      else:
-        print('Do not create ESS Server2')
-
+    #if essEnabled == 'true':
+    #  createCluster(essClr)
+    #  adaptManagedServer('ess_server1',essSvr1,server1Address,essSvr1Port,essClr,server1Machine,
+    #                     essJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+    #  if essSvr2Enabled == 'true':                   
+    #    createManagedServer(essSvr2,server2Address,essSvr2Port,essClr,server2Machine,
+    #                        essJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+    #  else:
+    #    print('Do not create ESS Server2')
     #
     print ('Finshed creating Machines, Clusters and ManagedServers')
     #
@@ -470,7 +491,13 @@ def main():
     print (lineSeperator)
     cd('/')
     print 'Add server groups '+adminSvrGrpDesc+ ' to '+adminServerName
-    setServerGroups(adminServerName, adminSvrGrp)                      
+    setServerGroups(adminServerName, adminSvrGrp)     
+    # WSM
+    if wsmEnabled == 'true':
+      print 'Add server group '+wsmSvrGrpDesc+' to '+wsmSvr1+' and possibly '+wsmSvr2
+      setServerGroups(wsmSvr1, wsmSvrGrp)
+      if wsmSvr2Enabled == 'true': 
+        setServerGroups(wsmSvr2, wsmSvrGrp)
     # SOA
     if soaEnabled == 'true':
       print 'Add server group '+soaSvrGrpDesc+' to '+soaSvr1+' and possibly '+soaSvr2
@@ -491,11 +518,11 @@ def main():
       if bamSvr2Enabled == 'true': 
         setServerGroups(bamSvr2, bamSvrGrp)    
     #
-    if essEnabled == 'true':
-      print 'Add server group '+essSvrGrpDesc+' to '+essSvr1+' and possibly '+essSvr2
-      setServerGroups(essSvr1, essSvrGrp)
-      if essSvr2Enabled == 'true': 
-        setServerGroups(essSvr2, essSvrGrp)
+    #if essEnabled == 'true':
+    #  print 'Add server group '+essSvrGrpDesc+' to '+essSvr1+' and possibly '+essSvr2
+    #  setServerGroups(essSvr1, essSvrGrp)
+    #  if essSvr2Enabled == 'true': 
+    #    setServerGroups(essSvr2, essSvrGrp)
     #
     print ('Finshed ServerGroups.')
     #
@@ -505,6 +532,11 @@ def main():
     # Section 6: Create boot properties files.
     print ('\n6. Create boot properties files')
     print (lineSeperator)
+    # WSM
+    if wsmEnabled == 'true':
+      createBootPropertiesFile(soaDomainHome+'/servers/'+wsmSvr1+'/security','boot.properties',adminUser,adminPwd)
+      if wsmSvr2Enabled == 'true': 
+        createBootPropertiesFile(soaDomainHome+'/servers/'+wsmSvr2+'/security','boot.properties',adminUser,adminPwd)
     # SOA
     if soaEnabled == 'true':
       createBootPropertiesFile(soaDomainHome+'/servers/'+soaSvr1+'/security','boot.properties',adminUser,adminPwd)
