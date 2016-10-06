@@ -31,10 +31,11 @@ if [ ! -d "$JDEVBPM_PROD_DIR" ]; then
 	$JAVA_HOME/bin/java -jar $JDEV_INSTALL_HOME/$JDEV_INSTALL_JAR -silent -responseFile $PWD/$JDEV_INSTALL_RSP
     echo copy jdev.boot naar $JDEV_HOME/jdeveloper/jdev/bin
     mv $JDEVBPM_PROD_DIR/jdeveloper/jdev/bin/jdev.boot $JDEVBPM_PROD_DIR/jdeveloper/jdev/bin/jdev.boot.org
-    cp $PWD/jdev.boot $JDEVBPM_PROD_DIR/jdeveloper/jdev/bin/
+    cp $PWD/jdevbpm.boot $JDEVBPM_PROD_DIR/jdeveloper/jdev/bin/jdev.boot
     echo copy JDeveloper BPM QuickStart 12cR2 environment and start scripts to ~/bin
-    cp $PWD/jdev12c_env.sh ~/bin 
-    cp $PWD/jdev12c.sh ~/bin
+	mkdir -p ~/bin/
+    cp $PWD/jdevbpm12c_env.sh ~/bin/ 
+    cp $PWD/jdevbpm12c.sh ~/bin/
   else
     echo $JDEV_INSTALL_JAR not available!.
   fi
