@@ -15,6 +15,7 @@ export BPM_PROD_DIR=$FMW_HOME/bpm
 export OSB_PROD_DIR=$FMW_HOME/osb
 export OHS_PROD_DIR=$FMW_HOME/ohs
 export JDEVWC_PROD_DIR=$ORACLE_BASE/product/jdeveloper_wc
+export JDEVBPM_PROD_DIR=$ORACLE_BASE/product/jdeveloper_bpm
 export EM_DIR=$FMW_HOME/em
 #export ORACLE_HOME=$ORACLE_BASE/product/middleware
 #export ORACLE_COMMON_HOME=$ORACLE_HOME/oracle_common
