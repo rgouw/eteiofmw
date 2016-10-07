@@ -14,20 +14,6 @@ wlsHome    = fmwHome+'/wlserver'
 soaDomainHome       = domainsHome+'/'+soaDomainName
 soaApplicationsHome = applicationsHome+'/'+soaDomainName
 #
-# Templates for 12.1.3
-#wlsjar =fmwHome+'/wlserver/common/templates/wls/wls.jar'
-#oracleCommonTplHome=fmwHome+'/oracle_common/common/templates'
-#wlservicetpl=oracleCommonTplHome+'/oracle.wls-webservice-template_12.1.3.jar'
-#osbtpl=fmwHome+'/osb/common/templates/wls/oracle.osb_template_12.1.3.jar'
-#applCoreTpl=oracleCommonTplHome+'/wls/oracle.applcore.model.stub.1.0.0_template.jar'
-#soatpl=fmwHome+'/soa/common/templates/wls/oracle.soa_template_12.1.3.jar'
-#bamtpl=fmwHome+'/soa/common/templates/wls/oracle.bam.server_template_12.1.3.jar'
-#bpmtpl=fmwHome+'/soa/common/templates/wls/oracle.bpm_template_12.1.3.jar'
-#essBasicTpl=oracleCommonTplHome+'/wls/oracle.ess.basic_template_12.1.3.jar'
-#essEmTpl=fmwHome+'/em/common/templates/wls/oracle.em_ess_template_12.1.3.jar'
-#ohsTpl=fmwHome+'/ohs/common/templates/wls/ohs_managed_template_12.1.3.jar'
-#b2bTpl=fmwHome+'/soa/common/templates/wls/oracle.soa.b2b_template_12.1.3.jar'
-#
 # Templates for 12.2.1
 # See also https://docs.oracle.com/middleware/12211/lcm/WLDTR/toc.htm
 wlsjar =fmwHome+'/wlserver/common/templates/wls/wls.jar'
@@ -41,30 +27,34 @@ bamtpl=fmwHome+'/soa/common/templates/wls/oracle.bam.server_template.jar'
 bpmtpl=fmwHome+'/soa/common/templates/wls/oracle.bpm_template.jar'
 ohsTpl=fmwHome+'/ohs/common/templates/wls/ohs_managed_template.jar' # need to be validated!
 b2bTpl=fmwHome+'/soa/common/templates/wls/oracle.soa.b2b_template.jar' # need to be validated!
-# ESS not used 
-#essBasicTpl=oracleCommonTplHome+'/wls/oracle.ess.basic_template.jar'
-#essEmTpl=fmwHome+'/em/common/templates/wls/oracle.em_ess_template.jar'
 #
 # ServerGroup definitions
 adminSvrGrpDesc='WSM-CACHE-SVR WSMPM-MAN-SVR JRF-MAN-SVR'
 adminSvrGrp=["WSM-CACHE-SVR" , "WSMPM-MAN-SVR" , "JRF-MAN-SVR"]
+#
+# OSB server groups with WSM-Policy Manager
 #osbSvrGrpDesc="OSB-MGD-SVRS-COMBINED"
 #osbSvrGrp=["OSB-MGD-SVRS-COMBINED"]
+# OSB server groups without WSM-Policy Manager
 osbSvrGrpDesc="OSB-MGD-SVRS-ONLY"
 osbSvrGrp=["OSB-MGD-SVRS-ONLY"]
+#
+# SOA server groups with WSM-Policy Manager
 #soaSvrGrpDesc="SOA-MGD-SVRS"
 #soaSvrGrp=["SOA-MGD-SVRS"]
+# SOA server groups without WSM-Policy Manager
 soaSvrGrpDesc="SOA-MGD-SVRS-ONLY"
 soaSvrGrp=["SOA-MGD-SVRS-ONLY"]
 #
 wsmSvrGrpDesc='WSMPM-MAN-SVR JRF-MAN-SVR WSM-CACHE-SVR'
 wsmSvrGrp=["WSMPM-MAN-SVR", "JRF-MAN-SVR", "WSM-CACHE-SVR"]
 #
-bamSvrGrpDesc="BAM12-MGD-SVRS"
-bamSvrGrp=["BAM12-MGD-SVRS"]
-#
-#essSvrGrpDesc="ESS-MGD-SVRS"
-#essSvrGrp=["ESS-MGD-SVRS"]
+# BAM server groups with WSM-Policy Manager
+#bamSvrGrpDesc="BAM12-MGD-SVRS"
+#bamSvrGrp=["BAM12-MGD-SVRS"]
+# BAM server groups without WSM-Policy Manager
+bamSvrGrpDesc="BAM12-MGD-SVRS-ONLY"
+bamSvrGrp=["BAM12-MGD-SVRS-ONLY"]
 #
 #
 lineSeperator='__________________________________________________________________________________'
@@ -382,14 +372,6 @@ def main():
       addTemplate(b2bTpl)
     else:
       print('B2B is disabled')
-    #
-    #if essEnabled == 'true':
-    #  print ('Adding ESS Template'+essBasicTpl)
-    #  addTemplate(essBasicTpl)
-    #  print ('Adding ESS Em Template'+essEmTpl)
-    #  addTemplate(essEmTpl)
-    #else:
-    #  print('ESS is disabled')
     # 
     dumpStack()
     print ('Finished templates')
@@ -416,7 +398,7 @@ def main():
     if bamEnabled == 'true':
       changeDatasourceToXA('BamDataSource')
     #
-    print 'Finshed DataSources'
+    print 'Finished DataSources'
     #
     # Section 4: Create UnixMachines, Clusters and Managed Servers
     print ('\n4. Create UnixMachines, Clusters and Managed Servers')
@@ -465,24 +447,14 @@ def main():
 	  # BAM
     if bamEnabled == 'true':
       createCluster(bamClr)
-      adaptManagedServer('bam_server1',bamSvr1,server1Address,bamSvr1Port,bamClr,server1Machine,
+      createManagedServer(bamSvr1,server1Address,bamSvr1Port,bamClr,server1Machine,
                          bamJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
       if bamSvr2Enabled == 'true':                   
         createManagedServer(bamSvr2,server2Address,bamSvr2Port,bamClr,server2Machine,
                             bamJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
       else:
         print('Do not create BAM Server2')
-	  #
-    # ESS
-    #if essEnabled == 'true':
-    #  createCluster(essClr)
-    #  adaptManagedServer('ess_server1',essSvr1,server1Address,essSvr1Port,essClr,server1Machine,
-    #                     essJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
-    #  if essSvr2Enabled == 'true':                   
-    #    createManagedServer(essSvr2,server2Address,essSvr2Port,essClr,server2Machine,
-    #                        essJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
-    #  else:
-    #    print('Do not create ESS Server2')
+
     #
     print ('Finshed creating Machines, Clusters and ManagedServers')
     #
@@ -518,12 +490,6 @@ def main():
       if bamSvr2Enabled == 'true': 
         setServerGroups(bamSvr2, bamSvrGrp)    
     #
-    #if essEnabled == 'true':
-    #  print 'Add server group '+essSvrGrpDesc+' to '+essSvr1+' and possibly '+essSvr2
-    #  setServerGroups(essSvr1, essSvrGrp)
-    #  if essSvr2Enabled == 'true': 
-    #    setServerGroups(essSvr2, essSvrGrp)
-    #
     print ('Finshed ServerGroups.')
     #
     updateDomain()
@@ -553,11 +519,6 @@ def main():
       createBootPropertiesFile(soaDomainHome+'/servers/'+bamSvr1+'/security','boot.properties',adminUser,adminPwd)
       if bamSvr2Enabled == 'true': 
         createBootPropertiesFile(soaDomainHome+'/servers/'+bamSvr1+'/security','boot.properties',adminUser,adminPwd)
-    #
-    if essEnabled == 'true':
-      createBootPropertiesFile(soaDomainHome+'/servers/'+essSvr1+'/security','boot.properties',adminUser,adminPwd)
-      if essSvr2Enabled == 'true': 
-        createBootPropertiesFile(soaDomainHome+'/servers/'+essSvr2+'/security','boot.properties',adminUser,adminPwd)
     #
     print ('\nFinished')
     #
