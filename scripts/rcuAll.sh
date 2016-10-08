@@ -4,7 +4,7 @@
 #
 echo Run rcu for SOA Infrastucture
 export RCU_INSTALL_HOME=$PWD/../Extracted/stage
-export RCU_SOA_RSP=rcuSOA.rsp
+export RCU_SOA_RSP=rcuAll.rsp
 export RCU_SOA_RSP_TPL=$RCU_SOA_RSP.tpl
 export RCU_SOA_PWD=rcuSOAPasswords.txt
 #

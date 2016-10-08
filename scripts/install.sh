@@ -33,3 +33,7 @@ echo
 echo _______________________________________________________________________________
 echo JDeveloper WebCenter
 ./installJDevWC.sh
+echo
+echo _______________________________________________________________________________
+echo JDeveloper BPM Quickstart
+./installBpmQS.sh
