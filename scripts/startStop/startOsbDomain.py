@@ -7,7 +7,7 @@
 #############################################################################
 # Modify these values as necessary
 import sys, traceback
-scriptName = 'startOsbDomain.py'
+scriptName = sys.argv[0]
 #
 #
 lineSeperator='__________________________________________________________________________________'

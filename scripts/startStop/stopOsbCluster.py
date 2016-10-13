@@ -7,7 +7,7 @@
 #############################################################################
 # Modify these values as necessary
 import sys, traceback
-scriptName = 'stopOsbCluster.py'
+scriptName = sys.argv[0]
 #
 #
 lineSeperator='__________________________________________________________________________________'

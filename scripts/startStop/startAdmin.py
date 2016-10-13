@@ -8,7 +8,7 @@
 #############################################################################
 # Modify these values as necessary
 import sys, traceback
-scriptName = 'startAdmin.py'
+scriptName = sys.argv[0]
 #
 #
 lineSeperator='__________________________________________________________________________________'
