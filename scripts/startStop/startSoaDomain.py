@@ -1,5 +1,5 @@
 #############################################################################
-# Start OSB Domain
+# Start SOA Domain
 #
 # @author Martien van den Akker, Darwin-IT Professionals
 # @version 1.1, 2016-06-27
@@ -121,7 +121,7 @@ def main():
   try:
     wlsDomainHome = wlsDomainsHome+'/'+wlsDomainName
     print (lineSeperator)
-    print ('Start Osb domain')
+    print ('Start SOA Domain')
     print('\nConnect to AdminServer ')
     print (lineSeperator)
     print ('Connect to the Node Manager')
@@ -129,8 +129,8 @@ def main():
     print ('Connect to the AdminServer: '+adminServerName)
     connectToadminServer(adminUrl, adminServerName)
     #
-    print('Start servers for cluster: '+osbClr)
-    startClusterServers(osbClr)
+    print('Start servers for cluster: '+soaClr)
+    startClusterServers(soaClr)
     #
     print('\nExiting...')
     exit()
