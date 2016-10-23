@@ -29,4 +29,8 @@ chown oracle:oinstall /app
 #
 # Add Oracle to sudoers so he can perform admin tasks
 echo Adding oracle user to sudo-ers.
-echo 'oracle           ALL=(ALL)       ALL' >> /etc/sudoers
+echo 'oracle           ALL=NOPASSWD:        ALL' >> /etc/sudoers
+#
+# Create oraInst.loc and grant to Oracle
+echo "" > /etc/oraInst.loc
+chown oracle:oinstall /etc/oraInst.loc

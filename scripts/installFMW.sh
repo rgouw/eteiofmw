@@ -3,10 +3,10 @@
 #
 export FMW_ZIP_HOME=$PWD/../Zipped
 export FMW_INSTALL_HOME=$PWD/../Extracted/stage
-export FMW_INSTALL_JAR=fmw_12.2.1.1.0_infrastructure.jar
-export FMW_INSTALL_RSP=fmw_12.2.1.1.0_infrastructure.rsp
+export FMW_INSTALL_JAR=fmw_12.2.1.2.0_infrastructure.jar
+export FMW_INSTALL_RSP=fmw_12.2.1.2.0_infrastructure.rsp
 export FMW_INSTALL_RSP_TPL=$FMW_INSTALL_RSP.tpl
-export FMW_INSTALL_ZIP=fmw_12.2.1.1.0_infrastructure_Disk1_1of1.zip
+export FMW_INSTALL_ZIP=fmw_12.2.1.2.0_infrastructure_Disk1_1of1.zip
 #
 # Fusion Middlware Infrastucture
 if [ ! -d "$FMW_HOME" ]; then

@@ -3,8 +3,8 @@
 #
 export OHS_ZIP_HOME=$PWD/../Zipped
 export OHS_INSTALL_HOME=$PWD/../Extracted/stage
-export OHS_INSTALL_BIN=fmw_12.2.1.1.0_ohs_linux64.bin
-export OHS_INSTALL_RSP=fmw_12.2.1.1.0_ohs.rsp
+export OHS_INSTALL_BIN=fmw_12.2.1.2.0_ohs_linux64.bin
+export OHS_INSTALL_RSP=fmw_12.2.1.2.0_ohs.rsp
 export OHS_INSTALL_RSP_TPL=$OHS_INSTALL_RSP.tpl
 #export OHS_INSTALL_ZIP=fmw_12.2.1.1.0_wcportal_Disk1_1of1.zip
 #

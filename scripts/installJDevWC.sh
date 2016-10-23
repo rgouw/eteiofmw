@@ -3,10 +3,10 @@
 #
 export JDEV_ZIP_HOME=$PWD/../Zipped
 export JDEV_INSTALL_HOME=$PWD/../Extracted/stage
-export JDEV_INSTALL_JAR=jdev_suite_122110.jar
-export JDEV_INSTALL_RSP=jdev_suite_122110.rsp
+export JDEV_INSTALL_JAR=jdev_suite_122120.jar
+export JDEV_INSTALL_RSP=jdev_suite_122120.rsp
 export JDEV_INSTALL_RSP_TPL=$JDEV_INSTALL_RSP.tpl
-export JDEV_INSTALL_ZIP=fmw_12.2.1.1.0_jdev_Disk1_1of1.zip
+export JDEV_INSTALL_ZIP=fmw_12.2.1.2.0_jdev_Disk1_1of1.zip
 #
 # JDeveloper 
 if [ ! -d "$JDEV_PROD_DIR" ]; then

@@ -1,0 +1,8 @@
+Make sure the network is connected before trying to install additional packages.
+
+After that, run the following script as Root user
+0.PrepOEL.sh
+1.MakeOracleUser.sh
+
+After creating the Oracle user, login as Oracle user and run the scripts
+3.Install.sh

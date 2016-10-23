@@ -3,10 +3,10 @@
 #
 export WCP_ZIP_HOME=$PWD/../Zipped
 export WCP_INSTALL_HOME=$PWD/../Extracted/stage
-export WCP_INSTALL_JAR=fmw_12.2.1.1.0_wcportal.jar
-export WCP_INSTALL_RSP=fmw_12.2.1.1.0_wcportal.rsp
+export WCP_INSTALL_JAR=fmw_12.2.1.2.0_wcportal.jar
+export WCP_INSTALL_RSP=fmw_12.2.1.2.0_wcportal.rsp
 export WCP_INSTALL_RSP_TPL=$WCP_INSTALL_RSP.tpl
-export WCP_INSTALL_ZIP=fmw_12.2.1.1.0_wcportal_Disk1_1of1.zip
+export WCP_INSTALL_ZIP=fmw_12.2.1.2.0_wcportal_Disk1_1of1.zip
 #
 # WebCenter Portal 12c
 if [[ -d "$FMW_HOME" && ! -d "$PORTAL_PROD_DIR/bin" ]]; then

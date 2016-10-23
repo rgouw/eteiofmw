@@ -2,7 +2,7 @@
 . $PWD/fmw12c_env.sh
 #
 export JAVA_INSTALL_HOME=$PWD/../Java
-export JAVA_INSTALL_RPM=/stage/jdk1.8.0_102
+export JAVA_INSTALL_RPM=$PWD/../Extracted/stage/jdk1.8.0_102
 #
 echo "Checking Java Home: "$JAVA_HOME
 if [ ! -f "$JAVA_HOME/bin/java" ]; then

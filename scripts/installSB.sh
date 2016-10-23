@@ -3,10 +3,10 @@
 #
 export OSB_ZIP_HOME=$PWD/../Zipped
 export OSB_INSTALL_HOME=$PWD/../Extracted/stage
-export OSB_INSTALL_JAR=fmw_12.2.1.1.0_osb.jar
-export OSB_INSTALL_RSP=fmw_12.2.1.1.0_osb.rsp
+export OSB_INSTALL_JAR=fmw_12.2.1.2.0_osb.jar
+export OSB_INSTALL_RSP=fmw_12.2.1.2.0_osb.rsp
 export OSB_INSTALL_RSP_TPL=$OSB_INSTALL_RSP.tpl
-export OSB_INSTALL_ZIP=fmw_12.2.1.1.0_osb_Disk1_1of1.zip
+export OSB_INSTALL_ZIP=fmw_12.2.1.2.0_osb_Disk1_1of1.zip
 #
 # ServiceBus 12c
 if [[ -d "$FMW_HOME" && ! -d "$OSB_PROD_DIR/bin" ]]; then

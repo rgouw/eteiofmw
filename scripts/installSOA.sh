@@ -3,10 +3,10 @@
 #
 export SOA_ZIP_HOME=$PWD/../Zipped
 export SOA_INSTALL_HOME=$PWD/../Extracted/stage
-export SOA_INSTALL_JAR=fmw_12.2.1.1.0_soa.jar
-export SOA_INSTALL_RSP=fmw_12.2.1.1.0_soa.rsp
+export SOA_INSTALL_JAR=fmw_12.2.1.2.0_soa.jar
+export SOA_INSTALL_RSP=fmw_12.2.1.2.0_soa.rsp
 export SOA_INSTALL_RSP_TPL=$SOA_INSTALL_RSP.tpl
-export SOA_INSTALL_ZIP=fmw_12.2.1.1.0_soa_Disk1_1of1.zip
+export SOA_INSTALL_ZIP=fmw_12.2.1.2.0_soa_Disk1_1of1.zip
 #Set this variable value to the Installation Type selected. e.g. SOA Suite, BPM.
 export SOABPM_INSTALL_TYPE=BPM
 #

@@ -28,10 +28,10 @@ if [ ! -f "$ORACLE_HOME/bin/oraping" ]; then
   echo Substitute $DB_INSTALL_RSP_TPL to $DB_INSTALL_RSP
   envsubst < $DB_INSTALL_RSP_TPL > $DB_INSTALL_RSP
   echo Starting the Oracle Installer with command line: $DB_INSTALL_HOME/database/runInstaller -silent -responseFile $PWD/$DB_INSTALL_RSP
-  #$DB_INSTALL_HOME/database/runInstaller -silent -ignorePrereq -responseFile $PWD/$DB_INSTALL_RSP
-  #while pgrep -u oracle oracle.installer.library_loc > /dev/null; do sleep 1; done
-  #sudo $INVENTORY_DIRECTORY/orainstRoot.sh
-  #sudo $ORACLE_HOME/root.sh
+  $DB_INSTALL_HOME/database/runInstaller -silent -ignorePrereq -responseFile $PWD/$DB_INSTALL_RSP
+  while pgrep -u oracle oracle.installer.library_loc > /dev/null; do sleep 1; done
+  sudo $INVENTORY_DIRECTORY/orainstRoot.sh
+  sudo $ORACLE_HOME/root.sh
   $ORACLE_HOME/bin/dbca -silent -createDatabase -templateName General_Purpose.dbc -gdbname book -sid book -responseFile NO_VALUE -characterSet AL32UTF8 -memoryPercentage 30 -emConfiguration LOCAL -SysPassword welcome1 -SystemPassword welcome1 
   cp $PWD/*.ora $ORACLE_HOME/network/admin/
   #$ORACLE_HOME/cfgtoollogs/configToolAllCommands RESPONSE_FILE=$DB_RSP

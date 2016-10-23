@@ -3,11 +3,11 @@
 #
 export JDEV_ZIP_HOME=$PWD/../Zipped
 export JDEV_INSTALL_HOME=$PWD/../Extracted/stage
-export JDEV_INSTALL_JAR=fmw_12.2.1.1.0_bpm_quickstart.jar
-export JDEV_INSTALL_RSP=fmw_12.2.1.1.0_bpm_quickstart.rsp
+export JDEV_INSTALL_JAR=fmw_12.2.1.2.0_bpm_quickstart.jar
+export JDEV_INSTALL_RSP=fmw_12.2.1.2.0_bpm_quickstart.rsp
 export JDEV_INSTALL_RSP_TPL=$JDEV_INSTALL_RSP.tpl
 ### Need to check the name of the zip file.
-export JDEV_INSTALL_ZIP=fmw_12.2.1.1.0_bpm_quickstart.zip
+export JDEV_INSTALL_ZIP=fmw_12.2.1.2.0_bpm_quickstart.zip
 #
 # Install BPM QS
 
