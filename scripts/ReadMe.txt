@@ -17,3 +17,27 @@ export DB_CONNECT_STR=darlin-vce-book:1521:${ORACLE_SID}
 
 Dit is nodig voor het draaien van de RCU: in de rsp wordt de database connect string vervangen door de waarde van DB_CONNECT_STR.
 
+
+OHS
+__________
+Uit thread: https://community.oracle.com/thread/3980791
+
+Supposing all of the above questions are yes, then:
+
+1. Examine this part of the OHS documentation - https://docs.oracle.com/middleware/1213/core/ASHIA/webtier.htm#ASHIA4406
+
+2. Actually you can configure OHS to reverse proxy all requests to the soa infra  by setting:
+
+<Location /soa-infra>
+
+SetHandler weblogic-handler
+
+WebLogicCluster apphost1.example.com:7050,apphost2.example.com:7050
+
+WLProxySSL On
+
+WLProxySSLPassThrough ON
+
+DefaultFileName index.jsp
+
+</Location>
