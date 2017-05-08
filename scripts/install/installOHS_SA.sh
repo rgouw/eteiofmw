@@ -1,8 +1,8 @@
 #!/bin/bash
 . $PWD/fmw12c_env.sh
 #
-export OHS_ZIP_HOME=$PWD/../Zipped/OHS
-export OHS_INSTALL_HOME=$PWD/../Extracted/stage/OHS
+export OHS_ZIP_HOME=$PWD/../../Zipped/OHS
+export OHS_INSTALL_HOME=$PWD/../../Extracted/OHS
 export OHS_INSTALL_BIN=fmw_12.2.1.2.0_ohs_linux64.bin
 export OHSSA_INSTALL_RSP=fmw_12.2.1.2.0_ohs_sa.rsp
 export OHSSA_INSTALL_RSP_TPL=$OHSSA_INSTALL_RSP.tpl
