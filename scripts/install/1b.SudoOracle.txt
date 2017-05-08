@@ -1,0 +1,30 @@
+Sudo grants to  oracle-user 
+To be able to run the script above (since it uses rpm via sudo)  we need to adapt the sudo-ers file.
+
+Log on as root via the command:
+[oracle@darlin-vce- db ~]$ su -
+ 
+Password:
+ 
+Last login: Fri Feb 26 06:44:05 EST 2016 on pts/0
+
+Edit de sudoers file: 
+[root@darlin-vce- db ~]# vi /etc/sudoers
+
+Uncomment the lines for the Cmnd_Alias-es SOFTWARE en SERVICES (remove the hash ’#’ at the beginning of the line): 
+
+## Installation and management of software
+ 
+Cmnd_Alias SOFTWARE = /bin/rpm, /usr/bin/up2date, /usr/bin/yum
+ 
+## Services
+ 
+Cmnd_Alias SERVICES = /sbin/service, /sbin/chkconfig
+
+And add the follwing two lines at the end of the file: 
+
+## Extra rights for oracle to do for instance rpm without password.
+ 
+oracle ALL= NOPASSWD: SERVICES, SOFTWARE
+
+Save the file (use an exclamation mark in the ‘:wq!’ command, since sudoers is readonly.After this you can run the installJava.sh.

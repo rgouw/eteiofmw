@@ -1,7 +1,7 @@
 #!/bin/bash
-echo _______________________________________________________________________________
-echo Installing Oracle Database 12c
-./installDB.sh
+#echo _______________________________________________________________________________
+#echo Installing Oracle Database 12c
+#./installDB.sh
 echo _______________________________________________________________________________
 echo Java SDK 8
 ./installJava.sh
@@ -33,11 +33,11 @@ echo
 echo _______________________________________________________________________________
 echo JDeveloper WebCenter
 ./installJDevWC.sh
-echo
-echo _______________________________________________________________________________
-echo JDeveloper BPM Quickstart
-./installBpmQS.sh
-echo
-echo _______________________________________________________________________________
-echo Install schemas in the database
-./rcuAll.sh
+#echo
+#echo _______________________________________________________________________________
+#echo JDeveloper BPM Quickstart
+#./installBpmQS.sh
+#echo
+#echo _______________________________________________________________________________
+#echo Install schemas in the database
+#./rcuAll.sh
