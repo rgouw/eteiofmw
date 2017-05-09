@@ -11,11 +11,11 @@ echo Fusion Middleware Infrastructure
 ./installFMW.sh
 echo
 echo _______________________________________________________________________________
-echo Oracle HTTP Server (Colocated)
+echo "Oracle HTTP Server (Colocated)"
 ./installOHS.sh
 echo
 echo _______________________________________________________________________________
-echo SOA & BPM Suite
+echo "SOA & BPM Suite"
 ./installSOA.sh
 echo
 echo _______________________________________________________________________________

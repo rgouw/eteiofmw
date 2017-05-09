@@ -10,7 +10,7 @@ export WCP_INSTALL_RSP_TPL=$WCP_INSTALL_RSP.tpl
 export WCP_INSTALL_ZIP=V779243-01.zip
 #
 # WebCenter Portal 12c
-if [[ -d "$FMW_HOME" && ! -d "$PORTAL_PROD_DIR/bin" ]]; then
+if [[ -d "$FMW_HOME" && ! -d "$WCP_PROD_DIR/common/bin" ]]; then
   #
   #Unzip WebCenter Portal
   if [ ! -f "$WCP_INSTALL_HOME/$WCP_INSTALL_JAR" ]; then
@@ -36,7 +36,7 @@ else
 echo 7
     echo $FMW_HOME not available: First install Fusion Middlware Infrastucture
   fi
-  if [ -d "$PORTAL_PROD_DIR/bin" ]; then
-    echo $PORTAL_PROD_DIR/bin available: WebCenter Portal installed
+  if [ -d "$WCP_PROD_DIR/common/bin" ]; then
+    echo $WCP_PROD_DIR/common/bin available: WebCenter Portal installed
   fi
 fi

@@ -10,7 +10,7 @@ export WCC_INSTALL_RSP_TPL=$WCC_INSTALL_RSP.tpl
 export WCC_INSTALL_ZIP=V779244-01.zip
 #
 # WebCenter Content 12c
-if [[ -d "$FMW_HOME" && ! -d "$CONTENT_PROD_DIR/bin" ]]; then
+if [[ -d "$FMW_HOME" && ! -d "$WCC_PROD_DIR/common/bin" ]]; then
   #
   #Unzip WebCenter Content
   if [ ! -f "$WCC_INSTALL_HOME/$WCC_INSTALL_JAR" ]; then
@@ -33,10 +33,10 @@ if [[ -d "$FMW_HOME" && ! -d "$CONTENT_PROD_DIR/bin" ]]; then
   fi
 else
   if [ ! -d "$FMW_HOME" ]; then
-echo 7
+    echo 7
     echo $FMW_HOME not available: First install Fusion Middlware Infrastucture
   fi
-  if [ -d "$CONTENT_PROD_DIR/bin" ]; then
-    echo $CONTENT_PROD_DIR/bin available: WebCenter Content installed
+  if [ -d "$WCC_PROD_DIR/common/bin" ]; then
+    echo $WCC_PROD_DIR/common/bin available: WebCenter Content installed
   fi
 fi
