@@ -11,6 +11,10 @@ echo Fusion Middleware Infrastructure
 ./installFMW.sh
 echo
 echo _______________________________________________________________________________
+echo Oracle HTTP Server (Colocated)
+./installOHS.sh
+echo
+echo _______________________________________________________________________________
 echo SOA & BPM Suite
 ./installSOA.sh
 echo
@@ -25,14 +29,10 @@ echo
 echo _______________________________________________________________________________
 echo WebCenter Portal
 ./installWCP.sh
-echo
-echo _______________________________________________________________________________
-echo WebCenter Portal
-./installOHS.sh
-echo
-echo _______________________________________________________________________________
-echo JDeveloper WebCenter
-./installJDevWC.sh
+#echo
+#echo _______________________________________________________________________________
+#echo JDeveloper WebCenter
+#./installJDevWC.sh
 #echo
 #echo _______________________________________________________________________________
 #echo JDeveloper BPM Quickstart
