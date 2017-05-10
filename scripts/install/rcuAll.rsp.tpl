@@ -18,7 +18,7 @@ dbRole=SYSDBA
 #edition=
 
 #Prefix to be used for the schema. This is optional for non-prefixable components.
-schemaPrefix=DEV
+schemaPrefix=${DB_SCHEMA_PREFIX}
 
 #List of components separated by comma. Remove the components which are not needed.
 componentList=STB,SOAINFRA,UCSUMS,CONTENT,MDS,CAPTURE,WLS,ESS,OPSS,CONTENTSEARCH,IAU,IAU_APPEND,IAU_VIEWER,WEBCENTER,PORTLET,ACTIVITIES,DISCUSSIONS
@@ -60,7 +60,7 @@ useSamePasswordForAllSchemaUsers=true
 #honorOMF=false
 
 #Variable required for component SOAINFRA. Database Profile
-SOA_PROFILE_TYPE=SMALL
+SOA_PROFILE_TYPE=${DB_PROFILE}
 
 #Variable required for component SOAINFRA. Healthcare Integration
 HEALTHCARE_INTEGRATION=NO

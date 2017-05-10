@@ -30,7 +30,7 @@ SOFTWARE_UPDATES_PROXY_USER=
 SOFTWARE_UPDATES_PROXY_PASSWORD=<SECURE VALUE>
 
 #The oracle home location. This can be an existing Oracle Home or a new Oracle Home
-ORACLE_HOME=/app/oracle/product/middleware/FMW12211
+ORACLE_HOME=/app/oracle/product/middleware/FMW12212
 
 #Set this variable value to the Installation Type selected. eg: WebCenter Content
 INSTALL_TYPE=WebCenter Content
