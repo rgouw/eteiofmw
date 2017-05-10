@@ -1,0 +1,90 @@
+Oracle SOA Suite for Oracle Middleware 12.2.1.2.6 for Linux x86-64
+	Click here if you no longer wish to download this set of files
+	
+Oracle Data Integrator (12.2.1.2.6)	
+	V837102-01_1of2.zipOracle Fusion Middleware 12c (12.2.1.2.6) Oracle Data Integrator 12.2.1.2.6
+	1.8 GB
+	V837102-01_2of2.zipOracle Fusion Middleware 12c (12.2.1.2.6) Oracle Data Integrator 12.2.1.2.6
+	352.6 MB
+Oracle B2B (12.2.1.2.0)	
+	V789370-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) B2B and Healthcare
+	986.3 MB
+Oracle BPEL Process Manager (12.2.1.2.0)	
+	V789369-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) SOA Suite and Business Process Management
+	1.7 GB
+	V790277-01_1of2.zipOracle Fusion Middleware 12c (12.2.1.2.0) SOA Quick Start
+	1.9 GB
+	V790277-01_2of2.zipOracle Fusion Middleware 12c (12.2.1.2.0) SOA Quick Start
+	1.5 GB
+Oracle Business Activity Monitoring (12.2.1.2.0)	
+	V789369-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) SOA Suite and Business Process Management
+	1.7 GB
+	V790277-01_1of2.zipOracle Fusion Middleware 12c (12.2.1.2.0) SOA Quick Start
+	1.9 GB
+	V790277-01_2of2.zipOracle Fusion Middleware 12c (12.2.1.2.0) SOA Quick Start
+	1.5 GB
+Oracle Business Process Management (12.2.1.2.0)	
+	V779125-01_1of2.zipOracle Fusion Middleware 12c (12.2.1.2.0) Business Process Management Quick Start for Developers
+	1.9 GB
+	V779125-01_2of2.zipOracle Fusion Middleware 12c (12.2.1.2.0) Business Process Management Quick Start for Developers
+	1.8 GB
+	V789369-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) SOA Suite and Business Process Management
+	1.7 GB
+Oracle Coherence (12.2.1.2.0)	
+	V779119-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) WebLogic Server and Coherence
+	791.2 MB
+	V779120-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) Coherence
+	103.1 MB
+Oracle JDeveloper (12.2.1.2.0)	
+	V779124-01_1of2.zipOracle Fusion Middleware 12c (12.2.1.2.0) JDeveloper Studio Generic
+	2.0 GB
+	V779124-01_2of2.zipOracle Fusion Middleware 12c (12.2.1.2.0) JDeveloper Studio Generic
+	195.3 MB
+Oracle SOA Suite (12.2.1.2.0)	
+	V789369-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) SOA Suite and Business Process Management
+	1.7 GB
+	V790277-01_1of2.zipOracle Fusion Middleware 12c (12.2.1.2.0) SOA Quick Start
+	1.9 GB
+	V790277-01_2of2.zipOracle Fusion Middleware 12c (12.2.1.2.0) SOA Quick Start
+	1.5 GB
+Oracle Service Bus (12.2.1.2.0)	
+	V779126-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) Service Bus
+	1.2 GB
+Oracle Stream Analytics (12.2.1.2.0)	
+	V789397-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) Oracle Stream Analytics
+	802.5 MB
+Oracle WebLogic Server (12.2.1.2.0)	
+	V779119-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) WebLogic Server and Coherence
+	791.2 MB
+	
+	Oracle Unified Business Process Management Suite 12.2.1.2.0 for Linux x86-64
+	Click here if you no longer wish to download this set of files
+	
+Oracle Coherence (12.2.1.2.0)	
+	V779119-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) WebLogic Server and Coherence
+	791.2 MB
+	V779120-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) Coherence
+	103.1 MB
+Oracle JDeveloper (12.2.1.2.0)	
+	V779124-01_1of2.zipOracle Fusion Middleware 12c (12.2.1.2.0) JDeveloper Studio Generic
+	2.0 GB
+	V779124-01_2of2.zipOracle Fusion Middleware 12c (12.2.1.2.0) JDeveloper Studio Generic
+	195.3 MB
+Oracle SOA Suite (12.2.1.2.0)	
+	V789369-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) SOA Suite and Business Process Management
+	1.7 GB
+	V790277-01_1of2.zipOracle Fusion Middleware 12c (12.2.1.2.0) SOA Quick Start
+	1.9 GB
+	V790277-01_2of2.zipOracle Fusion Middleware 12c (12.2.1.2.0) SOA Quick Start
+	1.5 GB
+Oracle WebCenter Portal (12.2.1.2.0)	
+	V779243-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) WebCenter Portal
+	614.6 MB
+Oracle WebLogic Server (12.2.1.2.0)	
+	V779119-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) WebLogic Server and Coherence
+	791.2 M
+  
+  Oracle HTTP Server (12.2.1.2.0) for Linux x86-64
+	Click here if you no longer wish to download this set of files
+	
+	V789368-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) HTTP Server for Linux x86-64

@@ -1,0 +1,25 @@
+# server & cluster namen en ports naar property file
+# vervanging van hardcoded servernamen naar properties
+# JavaArgs analoog aan adminserver java args, bepaling samenvoegen.
+# check startbaarheid van domein. 
+# valideer settings.
+# rename servername (aanmaken en dan hernoemen naar gewenste naam)
+# SOA en OSB schakelbaar maken
+# creatie van machines (naam)
+# Enabled properties naar property file
+. NodeManager start als secured listener
+# Kan niet connecten naar nm met weblogic user voor soabpm_domein
+# oplossen bam error queue probleem: moet zijn: dist_BamPersistenceErrorQueue_auto => kennelijk door verwijderen van servers ipv. rename.
+. uitzetten Derby DB.
+. bam configuratie...
+
+cd /media/sf_Stage/install/software/FMW/scripts/soa1221_domain/
+cd /u01/app/work/domains/soabpm_domain/nodemanager
+
+/u01/app/work/domains/soabpm_domain/startWebLogic.sh
+
+
+Connect to nodemanager.
+nmConnect('weblogic', 'welcome1' , 'darlin-vce-db.darwin-it.local','5555','soabpm_domain','/u01/app/work/domains/soabpm_domain','plain')
+WLSTException: Error occurred while performing nmConnect : Cannot connect to Node Manager. : Received error message from Node Manager Server: [Access to domain 'soabpm_domain' for user 'weblogic' denied]. Please check Node Manager log for details. 
+Use dumpStack() to view the full stacktrace :
