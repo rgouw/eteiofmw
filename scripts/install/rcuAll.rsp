@@ -21,7 +21,7 @@ dbRole=SYSDBA
 schemaPrefix=DEV
 
 #List of components separated by comma. Remove the components which are not needed.
-componentList=STB,SOAINFRA,UCSUMS,CONTENT,MDS,CAPTURE,WLS,ESS,OPSS,CONTENTSEARCH,IAU,IAU_APPEND,IAU_VIEWER,WEBCENTER,PORTLET,ACTIVITIES,DISCUSSIONS
+componentList=STB,WLS,SOAINFRA,UCSUMS,CONTENT,MDS,CAPTURE,OPSS,CONTENTSEARCH,IAU,IAU_APPEND,IAU_VIEWER,WEBCENTER,PORTLET,ACTIVITIES,DISCUSSIONS
 
 #Specify whether dependent components of the given componentList have to be selected. true | false - default is false
 #selectDependentsForComponents=false

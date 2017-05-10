@@ -6,7 +6,7 @@ echo Run rcu for FMW Infrastucture
 export RCU_INSTALL_HOME=$PWD/../Extracted/stage
 export RCU_ALL_RSP=rcuAll.rsp
 export RCU_ALL_RSP_TPL=$RCU_ALL_RSP.tpl
-export RCU_ALL_PWD=rcuSOAPasswords.txt
+export RCU_ALL_PWD=rcuAllPasswords.txt
 #
 export DB_SCHEMA_PREFIX=DEV
 # DB_PROFILE: SMALL/MED/LARGE

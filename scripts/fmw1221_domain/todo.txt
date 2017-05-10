@@ -10,8 +10,9 @@
 . NodeManager start als secured listener
 # Kan niet connecten naar nm met weblogic user voor soabpm_domein
 # oplossen bam error queue probleem: moet zijn: dist_BamPersistenceErrorQueue_auto => kennelijk door verwijderen van servers ipv. rename.
-. uitzetten Derby DB.
+. uitzetten Derby DB. ==> setUserOverrides.
 . bam configuratie...
+. Aanmaken setUserOverrides.sh (copy van DVOM)
 
 cd /media/sf_Stage/install/software/FMW/scripts/soa1221_domain/
 cd /u01/app/work/domains/soabpm_domain/nodemanager

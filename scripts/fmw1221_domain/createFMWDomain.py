@@ -188,13 +188,8 @@ def addServerToMachine(serverName, serverMachine):
   cd('/Servers/'+serverName)
   set('Machine',serverMachine)
 #
-# Determine the Server Java Args
-def getServerJavaArgs(serverName,javaArgsBase,logsHome):
-  javaArgs = javaArgsBase+' -Dweblogic.Stdout='+logsHome+'/'+serverName+'.out -Dweblogic.Stderr='+logsHome+'/'+serverName+'_err.out'
-  return javaArgs
-#
 # Change Managed Server
-def changeManagedServer(server,listenAddress,listenPort,javaArgs):
+def changeManagedServer(server,listenAddress,listenPort):
   print '\nChange ManagedServer '+server
   print (lineSeperator)
   cd('/Servers/'+server)
@@ -205,8 +200,6 @@ def changeManagedServer(server,listenAddress,listenPort,javaArgs):
   print ('. Create ServerStart')
   create(server,'ServerStart')
   cd('ServerStart/'+server)
-  print ('. Set Arguments to: '+javaArgs)
-  set('Arguments' , javaArgs)
   # SSL
   cd('/Server/'+server)
   print ('. Create server SSL')
@@ -226,14 +219,13 @@ def changeManagedServer(server,listenAddress,listenPort,javaArgs):
 #
 # Create a Managed Server
 def createManagedServer(server,listenAddress,listenPort,cluster,machine,
-                        javaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan):
+                        fileCount,fileMinSize,rotationType,fileTimeSpan):
   print('\nCreate '+server)
   print (lineSeperator)
   cd('/')
   create(server, 'Server')
   cd('/Servers/'+server)
-  javaArgs=getServerJavaArgs(server,javaArgsBase,logsHome)
-  changeManagedServer(server,listenAddress,listenPort,javaArgs)
+  changeManagedServer(server,listenAddress,listenPort)
   createServerLog(server, logsHome+'/'+server+'.log', fileCount, fileMinSize, rotationType, fileTimeSpan)
   print('Add '+server+' to cluster '+cluster)
   cd('/')
@@ -242,7 +234,7 @@ def createManagedServer(server,listenAddress,listenPort,cluster,machine,
 #
 # Adapt a Managed Server
 def adaptManagedServer(server,newSrvName,listenAddress,listenPort,cluster,machine,
-                       javaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan):
+                       fileCount,fileMinSize,rotationType,fileTimeSpan):
   print('\nAdapt '+server)
   print (lineSeperator)
   cd('/')
@@ -251,8 +243,7 @@ def adaptManagedServer(server,newSrvName,listenAddress,listenPort,cluster,machin
   print '. Rename '+server+' to '+ newSrvName
   set('Name',newSrvName )
   cd('/Servers/'+newSrvName)
-  javaArgs=getServerJavaArgs(newSrvName,javaArgsBase,logsHome)
-  changeManagedServer(newSrvName,listenAddress,listenPort,javaArgs)
+  changeManagedServer(newSrvName,listenAddress,listenPort)
   createServerLog(newSrvName, logsHome+'/'+newSrvName+'.log', fileCount, fileMinSize, rotationType, fileTimeSpan)
   print('Add '+newSrvName+' to cluster '+cluster)
   cd('/')
@@ -260,7 +251,7 @@ def adaptManagedServer(server,newSrvName,listenAddress,listenPort,cluster,machin
   addServerToMachine(newSrvName, machine)
 #
 # Change Admin Server
-def changeAdminServer(adminServerName,listenAddress,listenPort,javaArguments):
+def changeAdminServer(adminServerName,listenAddress,listenPort):
   print '\nChange AdminServer'
   print (lineSeperator)
   cd('/Servers/AdminServer')
@@ -278,8 +269,6 @@ def changeAdminServer(adminServerName,listenAddress,listenPort,javaArguments):
   print 'Create ServerStart'
   create(adminServerName,'ServerStart')
   cd('ServerStart/'+adminServerName)
-  print '. Set Arguments to: '+javaArguments
-  set('Arguments' , javaArguments)
   # SSL
   cd('/Server/'+adminServerName)
   print 'Create SSL'
@@ -313,8 +302,7 @@ def main():
     setLogProperties('/Log/base_domain', logsHome+soaDomainName+'.log', fileCount, fileMinSize, rotationType, fileTimeSpan)    
     #
     # Admin Server
-    adminJavaArgs = getServerJavaArgs(adminServerName,adminJavaArgsBase,logsHome)
-    changeAdminServer(adminServerName,adminListenAddress,adminListenPort,adminJavaArgs)
+    changeAdminServer(adminServerName,adminListenAddress,adminListenPort)
     createServerLog(adminServerName, logsHome+adminServerName+'.log', fileCount, fileMinSize, rotationType, fileTimeSpan)   
     #
     print('\nSet password in '+'/Security/base_domain/User/weblogic')
@@ -337,7 +325,7 @@ def main():
     writeDomain(soaDomainHome)
     closeTemplate()
     #
-    createAdminStartupPropertiesFile(soaDomainHome+'/servers/'+adminServerName+'/data/nodemanager',adminJavaArgs)
+    #createAdminStartupPropertiesFile(soaDomainHome+'/servers/'+adminServerName+'/data/nodemanager',adminJavaArgs)
     createBootPropertiesFile(soaDomainHome+'/servers/'+adminServerName+'/security','boot.properties',adminUser,adminPwd)
     createBootPropertiesFile(soaDomainHome+'/config/nodemanager','nm_password.properties',adminUser,adminPwd)
     #
@@ -470,10 +458,10 @@ def main():
     if soaEnabled == 'true':
       createCluster(soaClr)
       adaptManagedServer('soa_server1',soaSvr1,server1Address, soaSvr1Port,soaClr,server1Machine,
-                         soaJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+                         fileCount,fileMinSize,rotationType,fileTimeSpan)
       if soaSvr2Enabled == 'true':                   
         createManagedServer(soaSvr2,server2Address,soaSvr2Port,soaClr,server2Machine,
-                            soaJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+                            fileCount,fileMinSize,rotationType,fileTimeSpan)
       else:
         print('Do not create SOA Server2')
     #
@@ -481,10 +469,10 @@ def main():
     if wcpEnabled == 'true':
       createCluster(wcpClr)
       adaptManagedServer('WC_Portal',wcpSvr1,server1Address, wcpSvr1Port,wcpClr,server1Machine,
-                         wcpJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+                         fileCount,fileMinSize,rotationType,fileTimeSpan)
       if wcpSvr2Enabled == 'true':                   
         createManagedServer(wcpSvr2,server2Address,wcpSvr2Port,wcpClr,server2Machine,
-                            wcpJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+                            fileCount,fileMinSize,rotationType,fileTimeSpan)
       else:
         print('Do not create Portal Server2')
     #
@@ -492,10 +480,10 @@ def main():
     if wccEnabled == 'true':
       createCluster(wccClr)
       adaptManagedServer('UCM_server1',wccSvr1,server1Address, wccSvr1Port,wccClr,server1Machine,
-                         wccJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+                         fileCount,fileMinSize,rotationType,fileTimeSpan)
       if wccSvr2Enabled == 'true':                   
         createManagedServer(wccSvr2,server2Address,wccSvr2Port,wccClr,server2Machine,
-                            wccJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+                            fileCount,fileMinSize,rotationType,fileTimeSpan)
       else:
         print('Do not create Content Server2')
     #
@@ -503,20 +491,20 @@ def main():
     if osbEnabled == 'true':
       createCluster(osbClr)
       adaptManagedServer('osb_server1',osbSvr1,server1Address,osbSvr1Port,osbClr,server1Machine,
-                         osbJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+                         fileCount,fileMinSize,rotationType,fileTimeSpan)
       if osbSvr2Enabled == 'true':                   
         createManagedServer(osbSvr2,server2Address,osbSvr2Port,osbClr,server2Machine,
-                            osbJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+                            fileCount,fileMinSize,rotationType,fileTimeSpan)
       else:
         print('Do not create OSB Server2')  
     # WSM
     if wsmEnabled == 'true':
       createCluster(wsmClr)
       createManagedServer(wsmSvr1,server1Address,wsmSvr1Port,wsmClr,server1Machine,
-                          wsmJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+                          fileCount,fileMinSize,rotationType,fileTimeSpan)
       if wsmSvr2Enabled == 'true':                   
         createManagedServer(wsmSvr2,server2Address,wsmSvr2Port,wsmClr,server2Machine,
-                            wsmJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+                            fileCount,fileMinSize,rotationType,fileTimeSpan)
       else:
         print('Do not create WSM Server2')
     #
@@ -524,23 +512,12 @@ def main():
     if bamEnabled == 'true':
       createCluster(bamClr)
       adaptManagedServer('bam_server1',bamSvr1,server1Address,bamSvr1Port,bamClr,server1Machine,
-                         bamJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+                         fileCount,fileMinSize,rotationType,fileTimeSpan)
       if bamSvr2Enabled == 'true':                   
         createManagedServer(bamSvr2,server2Address,bamSvr2Port,bamClr,server2Machine,
-                            bamJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
+                            fileCount,fileMinSize,rotationType,fileTimeSpan)
       else:
         print('Do not create BAM Server2')
-	  #
-    # ESS
-    #if essEnabled == 'true':
-    #  createCluster(essClr)
-    #  adaptManagedServer('ess_server1',essSvr1,server1Address,essSvr1Port,essClr,server1Machine,
-    #                     essJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
-    #  if essSvr2Enabled == 'true':                   
-    #    createManagedServer(essSvr2,server2Address,essSvr2Port,essClr,server2Machine,
-    #                        essJavaArgsBase,fileCount,fileMinSize,rotationType,fileTimeSpan)
-    #  else:
-    #    print('Do not create ESS Server2')
     #
     print ('Finshed creating Machines, Clusters and ManagedServers')
     #
@@ -633,10 +610,10 @@ def main():
       if bamSvr2Enabled == 'true': 
         createBootPropertiesFile(soaDomainHome+'/servers/'+bamSvr1+'/security','boot.properties',adminUser,adminPwd)
     #
-    if essEnabled == 'true':
-      createBootPropertiesFile(soaDomainHome+'/servers/'+essSvr1+'/security','boot.properties',adminUser,adminPwd)
-      if essSvr2Enabled == 'true': 
-        createBootPropertiesFile(soaDomainHome+'/servers/'+essSvr2+'/security','boot.properties',adminUser,adminPwd)
+    #if essEnabled == 'true':
+    #  createBootPropertiesFile(soaDomainHome+'/servers/'+essSvr1+'/security','boot.properties',adminUser,adminPwd)
+    #  if essSvr2Enabled == 'true': 
+    #    createBootPropertiesFile(soaDomainHome+'/servers/'+essSvr2+'/security','boot.properties',adminUser,adminPwd)
     #
     print ('\nFinished')
     #
