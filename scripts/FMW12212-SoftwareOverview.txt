@@ -80,6 +80,13 @@ Oracle SOA Suite (12.2.1.2.0)
 Oracle WebCenter Portal (12.2.1.2.0)	
 	V779243-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) WebCenter Portal
 	614.6 MB
+ 
+Oracle WebCenter Content (12.2.1.2.0)	
+	V779244-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) WebCenter Content
+	614.6 MB 
+ 
+
+
 Oracle WebLogic Server (12.2.1.2.0)	
 	V779119-01.zipOracle Fusion Middleware 12c (12.2.1.2.0) WebLogic Server and Coherence
 	791.2 M
