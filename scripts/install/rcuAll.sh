@@ -3,7 +3,6 @@
 . $PWD/db12c_env.sh
 #
 echo Run rcu for FMW Infrastucture
-export RCU_INSTALL_HOME=$PWD/../Extracted/stage
 export RCU_ALL_RSP=rcuAll.rsp
 export RCU_ALL_RSP_TPL=$RCU_ALL_RSP.tpl
 export RCU_ALL_PWD=rcuAllPasswords.txt
