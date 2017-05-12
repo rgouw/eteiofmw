@@ -301,11 +301,11 @@ def main():
     # Domain Log
     print('Set base_domain log')
     create('base_domain','Log')
-    setLogProperties('/Log/base_domain', logsHome+domainName+'.log', fileCount, fileMinSize, rotationType, fileTimeSpan)    
+    setLogProperties('/Log/base_domain', logsHome+'/'+domainName+'.log', fileCount, fileMinSize, rotationType, fileTimeSpan)
     #
     # Admin Server
     changeAdminServer(adminServerName,adminListenAddress,adminListenPort)
-    createServerLog(adminServerName, logsHome+adminServerName+'.log', fileCount, fileMinSize, rotationType, fileTimeSpan)   
+    createServerLog(adminServerName, logsHome+'/'+adminServerName+'.log', fileCount, fileMinSize, rotationType, fileTimeSpan)
     #
     print('\nSet password in '+'/Security/base_domain/User/weblogic')
     cd('/')

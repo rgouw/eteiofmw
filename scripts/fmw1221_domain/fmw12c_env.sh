@@ -6,6 +6,7 @@ export WL_HOME=${FMW_HOME}/wlserver
 export SHARED_CONFIG_DIR=/data/oracle/config
 export DOMAIN_NAME=fmw_domain
 export DOMAIN_HOME=$SHARED_CONFIG_DIR/domains/$DOMAIN_NAME
+export APPLICATIONS_HOME=$SHARED_CONFIG_DIR/applications/$DOMAIN_NAME
 export NODEMGR_HOME=$DOMAIN_HOME/nodemanager
 #
 echo call setWLSEnv.sh
