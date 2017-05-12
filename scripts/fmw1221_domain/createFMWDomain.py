@@ -10,9 +10,11 @@ import sys, traceback
 scriptName = sys.argv[0]
 #
 #Home Folders
+fmwHome = os.getenv('FMW_HOME')
+javaHome = os.getenv('JAVA_HOME')
 wlsHome    = fmwHome+'/wlserver'
-soaDomainHome       = domainsHome+'/'+soaDomainName
-soaApplicationsHome = applicationsHome+'/'+soaDomainName
+domainHome       = domainsHome+'/'+domainName
+applicationsHome = applicationsBaseHome+'/'+domainName
 #
 # Templates for 12.1.3
 #wlsjar =fmwHome+'/wlserver/common/templates/wls/wls.jar'
@@ -290,7 +292,7 @@ def main():
     #
     # Section 1: Base Domain + Admin Server
     print (lineSeperator)
-    print ('1. Create Base domain '+soaDomainName)
+    print ('1. Create Base domain '+domainName)
     print('\nCreate base wls domain with template '+wlsjar)
     print (lineSeperator)
     readTemplate(wlsjar)
@@ -299,7 +301,7 @@ def main():
     # Domain Log
     print('Set base_domain log')
     create('base_domain','Log')
-    setLogProperties('/Log/base_domain', logsHome+soaDomainName+'.log', fileCount, fileMinSize, rotationType, fileTimeSpan)    
+    setLogProperties('/Log/base_domain', logsHome+domainName+'.log', fileCount, fileMinSize, rotationType, fileTimeSpan)    
     #
     # Admin Server
     changeAdminServer(adminServerName,adminListenAddress,adminListenPort)
@@ -322,19 +324,19 @@ def main():
     #
     print('write Domain...')
     # write path + domain name
-    writeDomain(soaDomainHome)
+    writeDomain(domainHome)
     closeTemplate()
     #
-    #createAdminStartupPropertiesFile(soaDomainHome+'/servers/'+adminServerName+'/data/nodemanager',adminJavaArgs)
-    createBootPropertiesFile(soaDomainHome+'/servers/'+adminServerName+'/security','boot.properties',adminUser,adminPwd)
-    createBootPropertiesFile(soaDomainHome+'/config/nodemanager','nm_password.properties',adminUser,adminPwd)
+    #createAdminStartupPropertiesFile(domainHome+'/servers/'+adminServerName+'/data/nodemanager',adminJavaArgs)
+    createBootPropertiesFile(domainHome+'/servers/'+adminServerName+'/security','boot.properties',adminUser,adminPwd)
+    createBootPropertiesFile(domainHome+'/config/nodemanager','nm_password.properties',adminUser,adminPwd)
     #
-    es = encrypt(adminPwd,soaDomainHome)
+    es = encrypt(adminPwd,domainHome)
     #
-    readDomain(soaDomainHome)
+    readDomain(domainHome)
     #
-    print('set Domain password for '+soaDomainName) 
-    cd('/SecurityConfiguration/'+soaDomainName)
+    print('set Domain password for '+domainName) 
+    cd('/SecurityConfiguration/'+domainName)
     set('CredentialEncrypted',es)
     #
     print('Set nodemanager password')
@@ -342,7 +344,7 @@ def main():
     set('NodeManagerPasswordEncrypted',es )
     #
     cd('/')
-    setOption( "AppDir", soaApplicationsHome )
+    setOption( "AppDir", applicationsHome )
     #
     print('Finished base domain.')
     #
@@ -578,42 +580,42 @@ def main():
     print (lineSeperator)
     # WSM
     if wsmEnabled == 'true':
-      createBootPropertiesFile(soaDomainHome+'/servers/'+wsmSvr1+'/security','boot.properties',adminUser,adminPwd)
+      createBootPropertiesFile(domainHome+'/servers/'+wsmSvr1+'/security','boot.properties',adminUser,adminPwd)
       if wsmSvr2Enabled == 'true': 
-        createBootPropertiesFile(soaDomainHome+'/servers/'+wsmSvr2+'/security','boot.properties',adminUser,adminPwd)
+        createBootPropertiesFile(domainHome+'/servers/'+wsmSvr2+'/security','boot.properties',adminUser,adminPwd)
     # SOA
     if soaEnabled == 'true':
-      createBootPropertiesFile(soaDomainHome+'/servers/'+soaSvr1+'/security','boot.properties',adminUser,adminPwd)
+      createBootPropertiesFile(domainHome+'/servers/'+soaSvr1+'/security','boot.properties',adminUser,adminPwd)
       if soaSvr2Enabled == 'true': 
-        createBootPropertiesFile(soaDomainHome+'/servers/'+soaSvr2+'/security','boot.properties',adminUser,adminPwd)
+        createBootPropertiesFile(domainHome+'/servers/'+soaSvr2+'/security','boot.properties',adminUser,adminPwd)
     #
     # Portal
     if wcpEnabled == 'true':
-      createBootPropertiesFile(soaDomainHome+'/servers/'+wcpSvr1+'/security','boot.properties',adminUser,adminPwd)
+      createBootPropertiesFile(domainHome+'/servers/'+wcpSvr1+'/security','boot.properties',adminUser,adminPwd)
       if wcpSvr2Enabled == 'true': 
-        createBootPropertiesFile(soaDomainHome+'/servers/'+wcpSvr2+'/security','boot.properties',adminUser,adminPwd)
+        createBootPropertiesFile(domainHome+'/servers/'+wcpSvr2+'/security','boot.properties',adminUser,adminPwd)
     #
     # Content
     if wccEnabled == 'true':
-      createBootPropertiesFile(soaDomainHome+'/servers/'+wccSvr1+'/security','boot.properties',adminUser,adminPwd)
+      createBootPropertiesFile(domainHome+'/servers/'+wccSvr1+'/security','boot.properties',adminUser,adminPwd)
       if wccSvr2Enabled == 'true': 
-        createBootPropertiesFile(soaDomainHome+'/servers/'+wccSvr2+'/security','boot.properties',adminUser,adminPwd)
+        createBootPropertiesFile(domainHome+'/servers/'+wccSvr2+'/security','boot.properties',adminUser,adminPwd)
     #
     # OSB
     if osbEnabled == 'true':
-      createBootPropertiesFile(soaDomainHome+'/servers/'+osbSvr1+'/security','boot.properties',adminUser,adminPwd)
+      createBootPropertiesFile(domainHome+'/servers/'+osbSvr1+'/security','boot.properties',adminUser,adminPwd)
       if osbSvr2Enabled == 'true': 
-        createBootPropertiesFile(soaDomainHome+'/servers/'+osbSvr2+'/security','boot.properties',adminUser,adminPwd)
+        createBootPropertiesFile(domainHome+'/servers/'+osbSvr2+'/security','boot.properties',adminUser,adminPwd)
     #
     if bamEnabled == 'true':
-      createBootPropertiesFile(soaDomainHome+'/servers/'+bamSvr1+'/security','boot.properties',adminUser,adminPwd)
+      createBootPropertiesFile(domainHome+'/servers/'+bamSvr1+'/security','boot.properties',adminUser,adminPwd)
       if bamSvr2Enabled == 'true': 
-        createBootPropertiesFile(soaDomainHome+'/servers/'+bamSvr1+'/security','boot.properties',adminUser,adminPwd)
+        createBootPropertiesFile(domainHome+'/servers/'+bamSvr1+'/security','boot.properties',adminUser,adminPwd)
     #
     #if essEnabled == 'true':
-    #  createBootPropertiesFile(soaDomainHome+'/servers/'+essSvr1+'/security','boot.properties',adminUser,adminPwd)
+    #  createBootPropertiesFile(domainHome+'/servers/'+essSvr1+'/security','boot.properties',adminUser,adminPwd)
     #  if essSvr2Enabled == 'true': 
-    #    createBootPropertiesFile(soaDomainHome+'/servers/'+essSvr2+'/security','boot.properties',adminUser,adminPwd)
+    #    createBootPropertiesFile(domainHome+'/servers/'+essSvr2+'/security','boot.properties',adminUser,adminPwd)
     #
     print ('\nFinished')
     #
