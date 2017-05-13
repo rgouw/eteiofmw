@@ -1,0 +1,1 @@
+./startStopDmn.sh restart Servers fmw $1

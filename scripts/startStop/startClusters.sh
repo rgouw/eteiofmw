@@ -1,0 +1,1 @@
+./startStopDmn.sh start Clusters fmw $1

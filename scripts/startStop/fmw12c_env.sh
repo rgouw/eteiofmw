@@ -1,11 +1,12 @@
 #!/bin/bash
 echo set Fusion MiddleWare 12cR2 environment
-export FMW_HOME=/u01/app/oracle/FMW12210
-export NODEMGR_HOME=/u01/app/work/domains/soabpm_domain/nodemanager
-
-export SOA_HOME=$FMW_HOME/soa
-export OSB_HOME=$FMW_HOME/osb
-export MFT_HOME=$FMW_HOME/mft
+export ORACLE_BASE=/app/oracle
+export FMW_HOME=$ORACLE_BASE/product/middleware/FMW12212
+export WL_HOME=${FMW_HOME}/wlserver
+export SHARED_CONFIG_DIR=/data/oracle/config
+export DOMAIN_NAME=fmw_domain
+export DOMAIN_HOME=$SHARED_CONFIG_DIR/domains/$DOMAIN_NAME
+export NODEMGR_HOME=$DOMAIN_HOME/nodemanager
 #
 echo call setWLSEnv.sh
 . $FMW_HOME/wlserver/server/bin/setWLSEnv.sh

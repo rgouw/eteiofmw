@@ -21,7 +21,7 @@ exit;
 EOF
 #
 # With use of a plugable database the following line needs to be added after the startup command
-#startup pluggable database pdborcl; 
+# startup pluggable database pdborcl; 
 #
 sleep 10
 echo "Database Services Successfully Started. "

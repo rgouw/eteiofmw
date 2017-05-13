@@ -1,0 +1,1 @@
+./startStopDmn.sh stop Servers fmw $1

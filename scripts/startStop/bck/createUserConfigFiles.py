@@ -1,5 +1,5 @@
 #############################################################################
-# Create user config files
+# Stop AdminServer 
 #
 # @author Martien van den Akker, Darwin-IT Professionals
 # @version 2.1, 2016-06-27
@@ -7,7 +7,7 @@
 #############################################################################
 # Modify these values as necessary
 import sys, traceback
-scriptName = sys.argv[0]
+scriptName = 'stopAdmin.py'
 #
 #
 lineSeperator='__________________________________________________________________________________'
@@ -33,7 +33,7 @@ def main():
     #
     print('\nStore Config files')
     storeUserConfig(usrCfgFile,usrKeyFile)
-    #
+    #   
     print('\nExiting...')
   except NameError, e:
     print('Apparently properties not set.')
@@ -45,4 +45,3 @@ def main():
     exit(exitcode=1)
 #
 main();
-
