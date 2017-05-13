@@ -32,7 +32,7 @@ def main():
     #
     # Section 1: Base Domain + Admin Server
     print (lineSeperator)
-    print ('Enroll '+soaDomainName+' for NodeManager')
+    print ('Enroll '+domainName+' for NodeManager')
     print('\nConnect to AdminServer ')
     print (lineSeperator)
     adminURL=adminListenAddress+':'+adminListenPort
@@ -41,7 +41,7 @@ def main():
     print('\nPerform nmEnroll')
     print (lineSeperator)
     #
-    nmEnroll(soaDomainHome, nodeManagerHome)
+    nmEnroll(domainHome, nodeManagerHome)
     #
     print ('\nFinished')
     #
