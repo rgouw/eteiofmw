@@ -1,0 +1,8 @@
+alias scr="cd /media/sf_Stage/FMW/scripts"
+alias iscr="cd /media/sf_Stage/FMW/scripts/install"
+alias dscr="cd /media/sf_Stage/FMW/scripts/startStop/fmw1221_domain"
+alias sscr="cd /media/sf_Stage/FMW/scripts/startStop"
+alias fmw_home="cd /app/oracle/product/middleware/FMW12212"
+alias dmn_home="cd /data/oracle/config/domains/fmw_domain"
+alias adm_logs="cd /data/oracle/config/domains/fmw_domain/servers/AdminServer/logs"
+alias soa_logs="cd /data/oracle/config/domains/fmw_domain/servers/SoaServer1/logs"
